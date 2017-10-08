@@ -1,0 +1,30 @@
+import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
+import {createStore} from 'redux';
+import {connect} from 'react-redux';
+import {Provider} from 'react-redux';
+import {Home, About, Search} from './screens';
+
+const Index = ({pathname}) => {
+	switch (pathname){
+		case '/':
+			return <Home />
+		case '/about':
+			return <About />
+		case '/search':
+			return <Search />
+		default:
+			return '/'
+	}
+}
+
+let pathname = window.location.pathname;
+
+ReactDOM.render(
+	<Index pathname = {pathname} />,
+	document.getElementById('root')
+)
+
+window.addEventListener('popstate', ()=>{
+	pathname = window.location.pathname
+})
